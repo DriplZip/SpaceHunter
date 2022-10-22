@@ -6,9 +6,11 @@ using UnityEngine;
 public class BordersCheck : MonoBehaviour
 {
     [Header("Set in Inspector")] 
-    [SerializeField] private float repulsionRadius = 1f;
-
-    [Header("Set Dynamically")] 
+    [SerializeField] private float repulsionRadius = 3f;
+    [SerializeField] private bool keepOnScreen = true;
+    
+    [Header("Set Dynamically")]
+    private bool isOnScreen = true;
     private float camWight;
     private float camHeight;
 
@@ -23,12 +25,36 @@ public class BordersCheck : MonoBehaviour
     private void LateUpdate()
     {
         Vector3 position = transform.position;
-
-        if (position.x > camWight - repulsionRadius) position.x = camWight - repulsionRadius;
-        if (position.x < -camWight + repulsionRadius) position.x = -camWight + repulsionRadius;
-        if (position.y > camHeight - repulsionRadius) position.y = camHeight - repulsionRadius;
-        if (position.y < -camHeight + repulsionRadius) position.y = -camHeight + repulsionRadius;
+        isOnScreen = true;
         
-        transform.position = position;
+        if (position.x > camWight - repulsionRadius)
+        {
+            position.x = camWight - repulsionRadius;
+            isOnScreen = false;
+        }
+
+        if (position.x < -camWight + repulsionRadius)
+        {
+            position.x = -camWight + repulsionRadius;
+            isOnScreen = false;
+        }
+
+        if (position.y > camHeight - repulsionRadius)
+        {
+            position.y = camHeight - repulsionRadius;
+            isOnScreen = false;
+        }
+
+        if (position.y < -camHeight + repulsionRadius)
+        {
+            position.y = -camHeight + repulsionRadius;
+            isOnScreen = false;
+        }
+
+        if (keepOnScreen && !isOnScreen)
+        {
+            transform.position = position;
+            isOnScreen = true;
+        }
     }
 }
