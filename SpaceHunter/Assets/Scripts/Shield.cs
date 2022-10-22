@@ -20,7 +20,7 @@ public class Shield : MonoBehaviour
 
     private void Update()
     {
-        int currentShieldLvl = Hero.S.SheildLvl;
+        int currentShieldLvl = Hero.S.ShieldLvl;
 
         if (shieldLvlShown != currentShieldLvl)
         {

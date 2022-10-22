@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 3548460846126658035}
   - component: {fileID: 5092956577204532261}
   - component: {fileID: 4353746577265376870}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Cabin
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -107,7 +107,7 @@ GameObject:
   - component: {fileID: 783236110150463463}
   - component: {fileID: 7988592435452437763}
   - component: {fileID: 6650658184261109720}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Wings
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -202,9 +202,9 @@ GameObject:
   - component: {fileID: -2424170377441720710}
   - component: {fileID: -1896927372277462816}
   - component: {fileID: 8010680698327121643}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Enemy_2
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

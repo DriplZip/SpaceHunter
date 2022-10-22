@@ -12,11 +12,23 @@ public class Hero : MonoBehaviour
     [SerializeField] private float rollMulti = -45;
     [SerializeField] private float rotationMulti = 30;
 
-    private int _shieldLvl = 1;
+    private const int maxShieldLvl = 4;
+    private int shieldLvl = 1;
+
+    private GameObject lastTriggerEnemy = null;
 
     public static Hero S => s;
-    
-    public int SheildLvl => _shieldLvl;
+
+    public int ShieldLvl
+    {
+        get => shieldLvl;
+        private set 
+        { 
+            shieldLvl = Mathf.Min(value, maxShieldLvl);
+            
+            if (value < 0) Destroy(this.gameObject);
+        }
+    }
 
     private void Awake()
     {
@@ -37,5 +49,25 @@ public class Hero : MonoBehaviour
         transform.position = position;
 
         transform.rotation = Quaternion.Euler(yAxis * rotationMulti, xAxis * rotationMulti, 0);
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        Transform rootTransform = other.gameObject.transform.root;
+        GameObject enemy = rootTransform.gameObject;
+        
+        if (enemy == lastTriggerEnemy) return;
+
+        lastTriggerEnemy = enemy;
+
+        if (enemy.CompareTag("Enemy"))
+        {
+            ShieldLvl--;
+            Destroy(enemy);
+        }
+        else
+        {
+            print("Triggered by non-Enemy: "+ enemy.name);
+        }
     }
 }
