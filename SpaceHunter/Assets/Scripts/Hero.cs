@@ -5,10 +5,8 @@ using UnityEngine;
 
 public class Hero : MonoBehaviour
 {
-    [SerializeField] private static Hero _s;
+    [SerializeField] private static Hero s;
 
-    public static Hero S => _s;
-    
     [Header("Set in Inspector")]
     [SerializeField] private float speed = 30;
     [SerializeField] private float rollMulti = -45;
@@ -16,12 +14,14 @@ public class Hero : MonoBehaviour
 
     private int _shieldLvl = 1;
 
+    public static Hero S => s;
+    
     public int SheildLvl => _shieldLvl;
 
     private void Awake()
     {
-        if (_s == null)
-            _s = this;
+        if (s == null)
+            s = this;
         else
             Debug.LogError("Hero.Awake() - Attempt to create not a single hero");
     }

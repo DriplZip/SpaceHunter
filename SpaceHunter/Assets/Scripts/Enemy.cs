@@ -14,10 +14,10 @@ public class Enemy : MonoBehaviour
 
    private BordersCheck bordersCheck;
    
-   private Vector3 Position
+   public Vector3 Position
    {
       get => transform.position;
-      set => transform.position = value;
+      private set => transform.position = value;
    }
 
    private void Awake()
