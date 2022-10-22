@@ -11,6 +11,8 @@ public class Hero : MonoBehaviour
     [SerializeField] private float speed = 30;
     [SerializeField] private float rollMulti = -45;
     [SerializeField] private float rotationMulti = 30;
+    [SerializeField] private GameObject projectilePrefab;
+    [SerializeField] private float projectileSpeed = 40;
 
     private const int maxShieldLvl = 4;
     private int shieldLvl = 1;
@@ -56,6 +58,17 @@ public class Hero : MonoBehaviour
         transform.position = position;
 
         transform.rotation = Quaternion.Euler(yAxis * rotationMulti, xAxis * rotationMulti, 0);
+
+        if (Input.GetKeyDown(KeyCode.Space)) StartShooting();
+    }
+
+    private void StartShooting()
+    {
+        GameObject projectile = Instantiate(projectilePrefab);
+        projectile.transform.position = transform.position;
+
+        Rigidbody rigidbodyProjectile = projectile.GetComponent<Rigidbody>();
+        rigidbodyProjectile.velocity = Vector3.up * projectileSpeed;
     }
 
     private void OnTriggerEnter(Collider other)

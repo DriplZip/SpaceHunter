@@ -192,7 +192,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 30
   rollMulti: -45
-  rotationMulti: 20
+  rotationMulti: 25
+  projectilePrefab: {fileID: 8580440784613944027, guid: 4fab1f6497263bb4385fab282224f7a6,
+    type: 3}
+  projectileSpeed: 40
 --- !u!114 &1567223834700323605
 MonoBehaviour:
   m_ObjectHideFlags: 0

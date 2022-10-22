@@ -43,4 +43,19 @@ public class Enemy : MonoBehaviour
 
       Position = tmpPosition;
    }
+
+   private void OnCollisionEnter(Collision collision)
+   {
+      GameObject other = collision.gameObject;
+
+      if (other.CompareTag("ProjectileHero"))
+      {
+         Destroy(other);
+         Destroy(gameObject);
+      }
+      else
+      {
+         print("Enemy hit by non-ProjectileHero: " + other.name);
+      }
+   }
 }
