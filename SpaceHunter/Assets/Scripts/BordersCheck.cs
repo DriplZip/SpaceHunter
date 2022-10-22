@@ -8,11 +8,17 @@ public class BordersCheck : MonoBehaviour
     [Header("Set in Inspector")] 
     [SerializeField] private float repulsionRadius = 3f;
     [SerializeField] private bool keepOnScreen = true;
+
+    public float RepulsionRadius => repulsionRadius;
     
     [Header("Set Dynamically")]
     private bool isOnScreen = true;
     private float camWight;
     private float camHeight;
+
+    public float CamHeight => camHeight;
+
+    public bool IsOnScreen => isOnScreen;
 
     private void Awake()
     {

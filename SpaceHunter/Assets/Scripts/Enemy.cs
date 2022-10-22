@@ -12,15 +12,27 @@ public class Enemy : MonoBehaviour
    [SerializeField] private float health = 10f;
    [SerializeField] private int score = 100;
 
-   public Vector3 Position
+   private BordersCheck bordersCheck;
+   
+   private Vector3 Position
    {
       get => transform.position;
-      private set => transform.position = value;
+      set => transform.position = value;
+   }
+
+   private void Awake()
+   {
+      bordersCheck = GetComponent<BordersCheck>();
    }
 
    private void Update()
    {
       Move();
+
+      if (bordersCheck != null && !bordersCheck.IsOnScreen)
+      {
+         if (Position.y < bordersCheck.CamHeight - bordersCheck.RepulsionRadius) Destroy(gameObject);
+      }
    }
 
    protected virtual void Move()
