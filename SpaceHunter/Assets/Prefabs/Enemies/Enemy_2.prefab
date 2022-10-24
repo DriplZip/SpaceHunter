@@ -253,7 +253,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6762963cf9d55074cb0195a9a44de09d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  repulsionRadius: 3
+  repulsionRadius: -3
   keepOnScreen: 0
 --- !u!114 &111556631586806295
 MonoBehaviour:
@@ -271,3 +271,5 @@ MonoBehaviour:
   fireRate: 0.3
   health: 10
   score: 100
+  sinEccentricity: 0.1
+  lifeTime: 10

@@ -19,7 +19,7 @@ public class Enemy_2 : Enemy
     {
         p0 = Vector3.zero;
         p0.x = -bordersCheck.CamWight - bordersCheck.RepulsionRadius;
-        p0.y = Random.Range(-bordersCheck.CamHeight, bordersCheck.CamHeight);
+        p0.y = Random.Range(0, bordersCheck.CamHeight);
         
         p1 = Vector3.zero;
         p1.x = bordersCheck.CamWight + bordersCheck.RepulsionRadius;
