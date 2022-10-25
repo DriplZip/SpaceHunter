@@ -271,5 +271,5 @@ MonoBehaviour:
   fireRate: 0.3
   health: 10
   score: 100
-  sinEccentricity: 0.1
+  sinEccentricity: 0.4
   lifeTime: 10
