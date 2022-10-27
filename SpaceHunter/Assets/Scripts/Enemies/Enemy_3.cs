@@ -23,7 +23,7 @@ public class Enemy_3 : Enemy
 
         Vector3 point = Vector3.zero;
         point.x = Random.Range(xMin, xMax);
-        point.y = -bordersCheck.CamHeight * Random.Range(2f, 2.5f);
+        point.y = -bordersCheck.CamHeight * Random.Range(2, 2.75f);
         
         points[1] = point;
         
@@ -48,7 +48,7 @@ public class Enemy_3 : Enemy
         }
 
         Vector3 p01, p12;
-        uBeziers -= 0.2f * Mathf.Sin(uBeziers * Mathf.PI * 2); // Beziers smoothing
+       // uBeziers -= 0.2f * Mathf.Sin(uBeziers * Mathf.PI * 2); // Beziers smoothing
         
         p01 = (1 - uBeziers) * points[0] + uBeziers * points[1];
         p12 = (1 - uBeziers) * points[1] + uBeziers * points[2];

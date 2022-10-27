@@ -232,6 +232,7 @@ GameObject:
   - component: {fileID: 963194229}
   - component: {fileID: 963194230}
   - component: {fileID: 963194231}
+  - component: {fileID: 963194232}
   m_Layer: 0
   m_Name: MainCamera
   m_TagString: MainCamera
@@ -317,8 +318,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemiesPrefab:
-  - {fileID: 6673122392818186068, guid: 2685c062b10f4b1438e7f9a0a6f70171, type: 3}
-  enemySpawnPerSecond: 0.5
+  - {fileID: 6673122392818186068, guid: 7d1735156e3ffba4eaf80a9ed38f163e, type: 3}
+  enemySpawnPerSecond: 2
   enemyDefaultPadding: 1.5
 --- !u!114 &963194230
 MonoBehaviour:
@@ -346,6 +347,51 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6ed5fae682828bd4fb6d6806ca103f35, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &963194232
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 963194225}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4b209b6b777c24e4984a747c9392ab1f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  enemiesPrefab: []
+  enemySpawnPerSecond: 0.5
+  enemyDefaultPadding: 1.5
+  weaponDefinitions:
+  - type: 1
+    projectilePrefab: {fileID: 8580440784613944027, guid: 4fab1f6497263bb4385fab282224f7a6,
+      type: 3}
+    letter: B
+    colorBonus: {r: 1, g: 1, b: 1, a: 1}
+    projectileColor: {r: 1, g: 1, b: 1, a: 1}
+    damageOnHit: 1
+    continuousDamage: 0
+    delayBetweenShots: 0.2
+    velocity: 50
+  - type: 2
+    projectilePrefab: {fileID: 8580440784613944027, guid: 4fab1f6497263bb4385fab282224f7a6,
+      type: 3}
+    letter: S
+    colorBonus: {r: 1, g: 1, b: 1, a: 1}
+    projectileColor: {r: 1, g: 1, b: 1, a: 1}
+    damageOnHit: 1
+    continuousDamage: 0
+    delayBetweenShots: 0.4
+    velocity: 50
+  - type: 3
+    projectilePrefab: {fileID: 0}
+    letter: O
+    colorBonus: {r: 1, g: 1, b: 1, a: 1}
+    projectileColor: {r: 1, g: 1, b: 1, a: 1}
+    damageOnHit: 0
+    continuousDamage: 0
+    delayBetweenShots: 0
+    velocity: 0
 --- !u!1001 &1083202897363452730
 PrefabInstance:
   m_ObjectHideFlags: 0
