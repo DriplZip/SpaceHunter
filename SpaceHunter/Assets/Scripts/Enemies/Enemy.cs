@@ -9,7 +9,16 @@ public class Enemy : MonoBehaviour
     [SerializeField] private float _health = 10f;
     [SerializeField] private int _score = 100;
 
+    [Header("Set Dynamically: Enemy")] 
+    private Color[] _originalColors;
+    private Material[] _materials;
+    private float _damageDoneTime;
+    private bool _showingDamage = false;
+    private bool _notificatedfDestruction = false;
+
     protected BordersCheck _bordersCheck;
+    
+    public float showDamageDuration = 0.1f;
 
     public Vector3 Position
     {
@@ -20,11 +29,20 @@ public class Enemy : MonoBehaviour
     private void Awake()
     {
         _bordersCheck = GetComponent<BordersCheck>();
+
+        _materials = Utils.GetAllMaterials(gameObject);
+        _originalColors = new Color[_materials.Length];
+        for (int i = 0; i < _materials.Length; i++)
+        {
+            _originalColors[i] = _materials[i].color;
+        }
     }
 
     private void Update()
     {
         Move();
+        
+        if (_showingDamage && Time.time > _damageDoneTime) UnShowDamage();
 
         if (_bordersCheck != null && !_bordersCheck.IsOnScreen)
             if (Position.y < _bordersCheck.CamHeight - _bordersCheck.RepulsionRadius)
@@ -48,6 +66,8 @@ public class Enemy : MonoBehaviour
                 _health -= EnemySpawner.GetWeaponDefinition(projectile.WeaponType).damageOnHit;
                 if (_health <= 0) Destroy(this.gameObject);
                 
+                ShowDamage();
+                
                 Destroy(other);
                 break;
             default:
@@ -63,5 +83,26 @@ public class Enemy : MonoBehaviour
         tmpPosition.y -= speed * Time.deltaTime;
 
         Position = tmpPosition;
+    }
+
+    private void ShowDamage()
+    {
+        foreach (Material material in _materials)
+        {
+            material.color = Color.red;
+        }
+
+        _showingDamage = true;
+        _damageDoneTime = Time.time + showDamageDuration;
+    }
+    
+    private void UnShowDamage()
+    {
+        for (int i = 0; i < _materials.Length; i++)
+        {
+            _materials[i].color = _originalColors[i];
+        }
+        
+        _showingDamage = false;
     }
 }
