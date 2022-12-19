@@ -317,13 +317,44 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2876efc88d41adf459841d96a473355c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemiesPrefab:
+  _enemiesPrefab:
   - {fileID: 6673122392818186068, guid: a532be902c85d51408d5bb420abc9877, type: 3}
   - {fileID: 6673122392818186068, guid: bb5001d916c3da64da255d0bfeaed649, type: 3}
   - {fileID: 6673122392818186068, guid: 2685c062b10f4b1438e7f9a0a6f70171, type: 3}
   - {fileID: 6673122392818186068, guid: 7d1735156e3ffba4eaf80a9ed38f163e, type: 3}
-  enemySpawnPerSecond: 2
-  enemyDefaultPadding: 1.5
+  - {fileID: 6673122392818186068, guid: be15eeade147cef4da25ab905e535d38, type: 3}
+  _enemySpawnPerSecond: 0.5
+  _enemyDefaultPadding: 1.5
+  WeaponDefinitions:
+  - letter: B
+    colorBonus: {r: 0.5137255, g: 0.5137255, b: 0.5137255, a: 1}
+    projectileColor: {r: 0, g: 1, b: 0, a: 0.9019608}
+    damageOnHit: 1
+    continuousDamage: 0
+    velocity: 50
+    type: 1
+    projectilePrefab: {fileID: 8580440784613944027, guid: 4fab1f6497263bb4385fab282224f7a6,
+      type: 3}
+    delayBetweenShots: 0.2
+  - letter: S
+    colorBonus: {r: 0.5137255, g: 0.5137255, b: 0.5137255, a: 1}
+    projectileColor: {r: 0, g: 1, b: 0, a: 0.9019608}
+    damageOnHit: 1
+    continuousDamage: 0
+    velocity: 50
+    type: 2
+    projectilePrefab: {fileID: 8580440784613944027, guid: 4fab1f6497263bb4385fab282224f7a6,
+      type: 3}
+    delayBetweenShots: 0.4
+  - letter: O
+    colorBonus: {r: 0.5137255, g: 0.5137255, b: 0.5137255, a: 1}
+    projectileColor: {r: 1, g: 1, b: 1, a: 1}
+    damageOnHit: 0
+    continuousDamage: 0
+    velocity: 0
+    type: 3
+    projectilePrefab: {fileID: 0}
+    delayBetweenShots: 0
 --- !u!114 &963194230
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -336,8 +367,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6762963cf9d55074cb0195a9a44de09d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  repulsionRadius: 1
-  keepOnScreen: 0
+  _repulsionRadius: 3
+  _keepOnScreen: 1
 --- !u!114 &963194231
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -362,39 +393,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4b209b6b777c24e4984a747c9392ab1f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemiesPrefab: []
-  enemySpawnPerSecond: 0.5
-  enemyDefaultPadding: 1.5
-  weaponDefinitions:
-  - type: 1
-    projectilePrefab: {fileID: 8580440784613944027, guid: 4fab1f6497263bb4385fab282224f7a6,
-      type: 3}
-    letter: B
-    colorBonus: {r: 1, g: 1, b: 1, a: 1}
-    projectileColor: {r: 1, g: 1, b: 1, a: 1}
-    damageOnHit: 1
-    continuousDamage: 0
-    delayBetweenShots: 0.2
-    velocity: 50
-  - type: 2
-    projectilePrefab: {fileID: 8580440784613944027, guid: 4fab1f6497263bb4385fab282224f7a6,
-      type: 3}
-    letter: S
-    colorBonus: {r: 1, g: 1, b: 1, a: 1}
-    projectileColor: {r: 1, g: 1, b: 1, a: 1}
-    damageOnHit: 1
-    continuousDamage: 0
-    delayBetweenShots: 0.4
-    velocity: 50
-  - type: 3
-    projectilePrefab: {fileID: 0}
-    letter: O
-    colorBonus: {r: 1, g: 1, b: 1, a: 1}
-    projectileColor: {r: 1, g: 1, b: 1, a: 1}
-    damageOnHit: 0
-    continuousDamage: 0
-    delayBetweenShots: 0
-    velocity: 0
+  _weaponDefinitions: []
 --- !u!1001 &1083202897363452730
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -402,75 +401,76 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: -2105596799546148791, guid: 59ee6146c32405f42ba80ac7382fd4c2,
-        type: 3}
-      propertyPath: rotationMulti
-      value: 20
-      objectReference: {fileID: 0}
-    - target: {fileID: 1083202896198483594, guid: 59ee6146c32405f42ba80ac7382fd4c2,
+    - target: {fileID: 2700813603213160736, guid: 59ee6146c32405f42ba80ac7382fd4c2,
         type: 3}
       propertyPath: m_Name
       value: Hero
       objectReference: {fileID: 0}
-    - target: {fileID: 1083202896198483595, guid: 59ee6146c32405f42ba80ac7382fd4c2,
+    - target: {fileID: 2700813603213160737, guid: 59ee6146c32405f42ba80ac7382fd4c2,
         type: 3}
       propertyPath: m_RootOrder
-      value: 2
+      value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 1083202896198483595, guid: 59ee6146c32405f42ba80ac7382fd4c2,
+    - target: {fileID: 2700813603213160737, guid: 59ee6146c32405f42ba80ac7382fd4c2,
         type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 1083202896198483595, guid: 59ee6146c32405f42ba80ac7382fd4c2,
+    - target: {fileID: 2700813603213160737, guid: 59ee6146c32405f42ba80ac7382fd4c2,
         type: 3}
       propertyPath: m_LocalPosition.y
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 1083202896198483595, guid: 59ee6146c32405f42ba80ac7382fd4c2,
+    - target: {fileID: 2700813603213160737, guid: 59ee6146c32405f42ba80ac7382fd4c2,
         type: 3}
       propertyPath: m_LocalPosition.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 1083202896198483595, guid: 59ee6146c32405f42ba80ac7382fd4c2,
+    - target: {fileID: 2700813603213160737, guid: 59ee6146c32405f42ba80ac7382fd4c2,
         type: 3}
       propertyPath: m_LocalRotation.w
       value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 1083202896198483595, guid: 59ee6146c32405f42ba80ac7382fd4c2,
+    - target: {fileID: 2700813603213160737, guid: 59ee6146c32405f42ba80ac7382fd4c2,
         type: 3}
       propertyPath: m_LocalRotation.x
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 1083202896198483595, guid: 59ee6146c32405f42ba80ac7382fd4c2,
+    - target: {fileID: 2700813603213160737, guid: 59ee6146c32405f42ba80ac7382fd4c2,
         type: 3}
       propertyPath: m_LocalRotation.y
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 1083202896198483595, guid: 59ee6146c32405f42ba80ac7382fd4c2,
+    - target: {fileID: 2700813603213160737, guid: 59ee6146c32405f42ba80ac7382fd4c2,
         type: 3}
       propertyPath: m_LocalRotation.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 1083202896198483595, guid: 59ee6146c32405f42ba80ac7382fd4c2,
+    - target: {fileID: 2700813603213160737, guid: 59ee6146c32405f42ba80ac7382fd4c2,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 1083202896198483595, guid: 59ee6146c32405f42ba80ac7382fd4c2,
+    - target: {fileID: 2700813603213160737, guid: 59ee6146c32405f42ba80ac7382fd4c2,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 1083202896198483595, guid: 59ee6146c32405f42ba80ac7382fd4c2,
+    - target: {fileID: 2700813603213160737, guid: 59ee6146c32405f42ba80ac7382fd4c2,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 1567223834700323605, guid: 59ee6146c32405f42ba80ac7382fd4c2,
+    - target: {fileID: 4429383127954365696, guid: 59ee6146c32405f42ba80ac7382fd4c2,
         type: 3}
-      propertyPath: repulsionRadius
-      value: 4
+      propertyPath: _type
+      value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 5238832331642353635, guid: 59ee6146c32405f42ba80ac7382fd4c2,
+        type: 3}
+      propertyPath: _projectilePrefab
+      value: 
+      objectReference: {fileID: 8580440784613944027, guid: 4fab1f6497263bb4385fab282224f7a6,
+        type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 59ee6146c32405f42ba80ac7382fd4c2, type: 3}

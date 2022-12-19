@@ -1,61 +1,57 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.EventSystems;
 
 public class Enemy : MonoBehaviour
 {
-   [Header("Set in Inspector")]
-   [SerializeField] private float speed = 10f;
-   [SerializeField] private float fireRate = 0.3f;
-   [SerializeField] private float health = 10f;
-   [SerializeField] private int score = 100;
+    [Header("Set in Inspector")] [SerializeField]
+    private float speed = 10f;
 
-   protected BordersCheck bordersCheck;
-   
-   public Vector3 Position
-   {
-      get => transform.position;
-      set => transform.position = value;
-   }
+    [SerializeField] private float _fireRate = 0.3f;
+    [SerializeField] private float _health = 10f;
+    [SerializeField] private int _score = 100;
 
-   private void Awake()
-   {
-      bordersCheck = GetComponent<BordersCheck>();
-   }
+    protected BordersCheck _bordersCheck;
 
-   private void Update()
-   {
-      Move();
+    public Vector3 Position
+    {
+        get => transform.position;
+        set => transform.position = value;
+    }
 
-      if (bordersCheck != null && !bordersCheck.IsOnScreen)
-      {
-         if (Position.y < bordersCheck.CamHeight - bordersCheck.RepulsionRadius) Destroy(gameObject);
-      }
-   }
+    private void Awake()
+    {
+        _bordersCheck = GetComponent<BordersCheck>();
+    }
 
-   protected virtual void Move()
-   {
-      Vector3 tmpPosition = Position;
+    private void Update()
+    {
+        Move();
 
-      tmpPosition.y -= speed * Time.deltaTime;
+        if (_bordersCheck != null && !_bordersCheck.IsOnScreen)
+            if (Position.y < _bordersCheck.CamHeight - _bordersCheck.RepulsionRadius)
+                Destroy(gameObject);
+    }
 
-      Position = tmpPosition;
-   }
+    private void OnCollisionEnter(Collision collision)
+    {
+        GameObject other = collision.gameObject;
 
-   private void OnCollisionEnter(Collision collision)
-   {
-      GameObject other = collision.gameObject;
+        if (other.CompareTag("ProjectileHero"))
+        {
+            Destroy(other);
+            Destroy(gameObject);
+        }
+        else
+        {
+            print("Enemy hit by non-ProjectileHero: " + other.name);
+        }
+    }
 
-      if (other.CompareTag("ProjectileHero"))
-      {
-         Destroy(other);
-         Destroy(gameObject);
-      }
-      else
-      {
-         print("Enemy hit by non-ProjectileHero: " + other.name);
-      }
-   }
+    protected virtual void Move()
+    {
+        Vector3 tmpPosition = Position;
+
+        tmpPosition.y -= speed * Time.deltaTime;
+
+        Position = tmpPosition;
+    }
 }

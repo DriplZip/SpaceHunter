@@ -1,27 +1,30 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class BonusSpawner : MonoBehaviour
 {
-    private static BonusSpawner s;
+    private static BonusSpawner _s;
     private static Dictionary<WeaponType, WeaponDefinition> WEAPON_DICT;
 
-    [SerializeField] private WeaponDefinition[] weaponDefinitions;
+    [SerializeField] private WeaponDefinition[] _weaponDefinitions;
 
-    private BordersCheck bordersCheck;
+    private BordersCheck _bordersCheck;
 
     private void Awake()
     {
-        s = this;
+        _s = this;
 
-        bordersCheck = GetComponent<BordersCheck>();
+        _bordersCheck = GetComponent<BordersCheck>();
 
         WEAPON_DICT = new Dictionary<WeaponType, WeaponDefinition>();
 
-        foreach (WeaponDefinition definition in weaponDefinitions)
-        {
-            WEAPON_DICT[definition.type] = definition;
-        }
+        foreach (WeaponDefinition definition in _weaponDefinitions) WEAPON_DICT[definition.type] = definition;
+    }
+    
+    public static WeaponDefinition GetWeaponDefinition(WeaponType weaponType)
+    {
+        if (WEAPON_DICT.ContainsKey(weaponType)) return WEAPON_DICT[weaponType];
+
+        return new WeaponDefinition();
     }
 }
