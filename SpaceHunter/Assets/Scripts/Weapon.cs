@@ -17,13 +17,13 @@ public class WeaponDefinition
     [SerializeField] private Color colorBonus = Color.white;
     [SerializeField] private Color projectileColor = Color.white;
 
-    [SerializeField] private float damageOnHit = 0;
     [SerializeField] private float continuousDamage = 0;
     [SerializeField] private float velocity = 20;
-    
+
     public WeaponType type = WeaponType.none;
     public GameObject projectilePrefab;
-    
+
+    public float damageOnHit = 0;
     public float delayBetweenShots = 0;
     public float Velocity => velocity;
     public Color ProjectileColor => projectileColor;
