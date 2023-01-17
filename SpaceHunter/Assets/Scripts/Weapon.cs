@@ -26,7 +26,9 @@ public class WeaponDefinition
     public float damageOnHit = 0;
     public float delayBetweenShots = 0;
     public float Velocity => velocity;
+    public string Letter => letter;
     public Color ProjectileColor => projectileColor;
+    public Color ColorBonus => colorBonus;
 }
 
 public class Weapon : MonoBehaviour

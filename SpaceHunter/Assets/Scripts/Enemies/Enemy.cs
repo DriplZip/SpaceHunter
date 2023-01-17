@@ -2,7 +2,8 @@ using UnityEngine;
 
 public class Enemy : MonoBehaviour
 {
-    [Header("Set in Inspector")] [SerializeField]
+    [Header("Set in Inspector")]
+    [SerializeField]
     private float speed = 10f;
 
     [SerializeField] private float _fireRate = 0.3f;
