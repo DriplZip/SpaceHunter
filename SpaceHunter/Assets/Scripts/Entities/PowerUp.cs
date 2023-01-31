@@ -10,7 +10,7 @@ public class PowerUp : MonoBehaviour
     [SerializeField] private Vector2 _rotationMinMax = new Vector2(15, 90);
     [SerializeField] private Vector2 _driftMinMax = new Vector2(0.25f, 2);
     [SerializeField] private float _lifeTime = 6f;
-    [SerializeField] private float _fadeTime = 4f;
+    [SerializeField] private float _fadeTime = 2f;
 
     [Header("Set dynamically")]
     public WeaponType bonusType;

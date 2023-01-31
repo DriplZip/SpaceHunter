@@ -11,6 +11,7 @@ public class Hero : MonoBehaviour
     [SerializeField] private float _rotationMulti = 30;
     [SerializeField] private GameObject _projectilePrefab;
     [SerializeField] private float _projectileSpeed = 40;
+    public Weapon[] weapons;
 
     private readonly float _gameRestartDelay = 2f;
 
@@ -73,8 +74,12 @@ public class Hero : MonoBehaviour
 
         if (enemy.CompareTag("Enemy"))
         {
-            Destroy(enemy);
             ShieldLvl--;
+            Destroy(enemy);
+        }
+        else if (enemy.CompareTag("PowerUp"))
+        {
+            AbsorbPowerUp(enemy);
         }
         else
         {
@@ -95,5 +100,58 @@ public class Hero : MonoBehaviour
         float speed = EnemySpawner.GetWeaponDefinition(projectile.WeaponType).Velocity;
         
         rigidbodyProjectile.velocity = Vector3.up * speed;
+    }
+
+    public void AbsorbPowerUp(GameObject target)
+    {
+        PowerUp powerUp = target.GetComponent<PowerUp>();
+
+        switch (powerUp.bonusType)
+        {
+            case WeaponType.shield:
+                if (_shieldLvl == 4) break;
+                
+                _shieldLvl++;
+                break;
+            
+            default:
+                if (powerUp.bonusType == weapons[0].Type)
+                {
+                    Weapon weapon = GetEmptyWeaponSlot();
+                    
+                    if (weapon != null)
+                    {
+                        weapon.Type = powerUp.bonusType;
+                    }
+                }
+                else
+                {
+                    ClearWeapons();
+                    weapons[0].Type = powerUp.bonusType;
+                }
+                break;
+        }
+        
+        powerUp.AbsorbedBy(this.gameObject);
+    }
+
+    Weapon GetEmptyWeaponSlot()
+    {
+        for (int i = 0; i < weapons.Length; i++)
+        {
+            if (weapons[i].Type == WeaponType.none) return weapons[i];
+        }
+
+        if (weapons.Length == 5) return weapons[weapons.Length - 1];
+
+        return null;
+    }
+
+    void ClearWeapons()
+    {
+        foreach (Weapon weapon in weapons)
+        {
+            weapon.Type = WeaponType.none;
+        }
     }
 }
