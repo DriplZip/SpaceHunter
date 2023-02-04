@@ -145,8 +145,12 @@ public class Enemy_4 : Enemy
                 }
 
                 partHit.health -= Main.GetWeaponDefinition(p.WeaponType).damageOnHit;
-                ShowLocalizedDamage(partHit.materialPart);
-                
+                Material[] materials = Utils.GetAllMaterials(partHit.gameObjectPart);
+                foreach (Material mat in materials)
+                {
+                    ShowLocalizedDamage(mat);
+                }
+
                 if (partHit.health <= 0) partHit.gameObjectPart.SetActive(false);
 
                 bool allDestroyed = true;
