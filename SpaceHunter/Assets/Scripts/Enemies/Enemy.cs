@@ -16,8 +16,8 @@ public class Enemy : MonoBehaviour
     [Header("Set Dynamically: Enemy")] 
     private Color[] _originalColors;
     private Material[] _materials;
-    private float _damageDoneTime;
-    private bool _showingDamage = false;
+    protected float _damageDoneTime;
+    protected bool _showingDamage = false;
     private bool _notifiedOfDestruction = false;
 
     protected BordersCheck _bordersCheck;
