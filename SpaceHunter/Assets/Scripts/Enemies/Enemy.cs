@@ -4,7 +4,9 @@ public class Enemy : MonoBehaviour
 {
     public float showDamageDuration = 0.1f;
     public float powerUpDropChance = 1f;
-    
+    public bool notifiedOfDestruction = false;
+
+
     [Header("Set in Inspector")]
     [SerializeField]
     private float speed = 10f;
@@ -13,13 +15,13 @@ public class Enemy : MonoBehaviour
     [SerializeField] private float _health = 10f;
     [SerializeField] private int _score = 100;
 
+
     [Header("Set Dynamically: Enemy")] 
     private Color[] _originalColors;
     private Material[] _materials;
     protected float _damageDoneTime;
     protected bool _showingDamage = false;
-    private bool _notifiedOfDestruction = false;
-
+    
     protected BordersCheck _bordersCheck;
 
     public Vector3 Position
@@ -68,12 +70,12 @@ public class Enemy : MonoBehaviour
                 _health -= Main.GetWeaponDefinition(projectile.WeaponType).damageOnHit;
                 if (_health <= 0)
                 {
-                    if (!_notifiedOfDestruction)
+                    if (!notifiedOfDestruction)
                     {
                         Main.S.ShipDestroyed(this);
                     }
 
-                    _notifiedOfDestruction = true;
+                    notifiedOfDestruction = true;
                     
                     Destroy(this.gameObject);
                 }

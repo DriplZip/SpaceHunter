@@ -26,7 +26,7 @@ public class Hero : MonoBehaviour
     public int ShieldLvl
     {
         get => _shieldLvl;
-        private set
+        set
         {
             _shieldLvl = Mathf.Min(value, MaxShieldLvl);
             if (value < 0)
@@ -75,6 +75,7 @@ public class Hero : MonoBehaviour
         if (enemy.CompareTag("Enemy"))
         {
             ShieldLvl--;
+            Main.S.ShipDestroyed(enemy.gameObject.GetComponent<Enemy>());
             Destroy(enemy);
         }
         else if (enemy.CompareTag("PowerUp"))
