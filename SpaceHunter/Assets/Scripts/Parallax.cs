@@ -26,7 +26,7 @@ public class Parallax : MonoBehaviour
    private void Update()
    {
       float tX = 0;
-      float tY = Time.time * scrollSpeed % panelHeight + (panelHeight * 0.5f);
+      float tY = Time.time * scrollSpeed % panelHeight ;
 
       if (PlayerGameObject != null) tX = -PlayerGameObject.transform.position.x * motionMult;
 
