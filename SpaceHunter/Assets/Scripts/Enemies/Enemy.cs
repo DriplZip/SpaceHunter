@@ -2,6 +2,9 @@ using UnityEngine;
 
 public class Enemy : MonoBehaviour
 {
+    public float showDamageDuration = 0.1f;
+    public float powerUpDropChance = 1f;
+    
     [Header("Set in Inspector")]
     [SerializeField]
     private float speed = 10f;
@@ -15,11 +18,9 @@ public class Enemy : MonoBehaviour
     private Material[] _materials;
     private float _damageDoneTime;
     private bool _showingDamage = false;
-    private bool _notificatedfDestruction = false;
+    private bool _notifiedOfDestruction = false;
 
     protected BordersCheck _bordersCheck;
-    
-    public float showDamageDuration = 0.1f;
 
     public Vector3 Position
     {
@@ -64,8 +65,18 @@ public class Enemy : MonoBehaviour
                     break;
                 }
 
-                _health -= EnemySpawner.GetWeaponDefinition(projectile.WeaponType).damageOnHit;
-                if (_health <= 0) Destroy(this.gameObject);
+                _health -= Main.GetWeaponDefinition(projectile.WeaponType).damageOnHit;
+                if (_health <= 0)
+                {
+                    if (!_notifiedOfDestruction)
+                    {
+                        Main.S.ShipDestroyed(this);
+                    }
+
+                    _notifiedOfDestruction = true;
+                    
+                    Destroy(this.gameObject);
+                }
                 
                 ShowDamage();
                 

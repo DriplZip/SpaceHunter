@@ -38,13 +38,13 @@ public class Hero : MonoBehaviour
         }
     }
 
-    private void Awake()
+    private void Start()
     {
-        if (_s == null)
-            _s = this;
-        else
-            Debug.LogError("Hero.Awake() - Attempt to create not a single hero");
-
+        _s = this;
+        
+        ClearWeapons();
+        weapons[0].Type = WeaponType.blaster;
+        
         //fireDelegate += StartShooting;
     }
 
@@ -97,7 +97,7 @@ public class Hero : MonoBehaviour
         Projectile projectile = projectilePref.GetComponent<Projectile>();
         projectile.WeaponType = WeaponType.blaster;
 
-        float speed = EnemySpawner.GetWeaponDefinition(projectile.WeaponType).Velocity;
+        float speed = Main.GetWeaponDefinition(projectile.WeaponType).Velocity;
         
         rigidbodyProjectile.velocity = Vector3.up * speed;
     }

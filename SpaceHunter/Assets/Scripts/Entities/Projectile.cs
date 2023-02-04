@@ -31,7 +31,7 @@ public class Projectile : MonoBehaviour
     {
         _weaponType = type;
 
-        WeaponDefinition weaponDefinition = EnemySpawner.GetWeaponDefinition(_weaponType);
+        WeaponDefinition weaponDefinition = Main.GetWeaponDefinition(_weaponType);
 
         _renderer.material.color = weaponDefinition.ProjectileColor;
     }

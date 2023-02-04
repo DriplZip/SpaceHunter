@@ -76,7 +76,7 @@ public class PowerUp : MonoBehaviour
 
     public void SetBonusType(WeaponType type)
     {
-        WeaponDefinition definition = EnemySpawner.GetWeaponDefinition(type);
+        WeaponDefinition definition = Main.GetWeaponDefinition(type);
         _cubeRenderer.material.color = definition.ColorBonus;
         letter.text = definition.Letter;
         bonusType = type;

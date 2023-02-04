@@ -47,7 +47,7 @@ public class Weapon : MonoBehaviour
         get => _type;
         set => SetWeaponType(value);
     }
-
+    
     private void Start()
     {
         _muzzle = transform.Find("Muzzle").gameObject;
@@ -77,7 +77,7 @@ public class Weapon : MonoBehaviour
 
         gameObject.SetActive(true);
 
-        _definition = EnemySpawner.GetWeaponDefinition(_type);
+        _definition = Main.GetWeaponDefinition(_type);
         _muzzleRenderer.material.color = _definition.ProjectileColor;
         _lastShotTime = 0;
     }

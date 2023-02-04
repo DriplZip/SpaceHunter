@@ -11,10 +11,6 @@ public class EnemySpawner : MonoBehaviour
     [SerializeField] private float _enemySpawnPerSecond = 0.5f;
     [SerializeField] private float _enemyDefaultPadding = 1.5f;
 
-    public WeaponDefinition[] WeaponDefinitions;
-
-    private static Dictionary<WeaponType, WeaponDefinition> WEAPON_DICT;
-
     private BordersCheck _bordersCheck;
 
     private void Awake()
@@ -24,12 +20,6 @@ public class EnemySpawner : MonoBehaviour
         _bordersCheck = GetComponent<BordersCheck>();
 
         Invoke(nameof(SpawnEnemy), 1f / _enemySpawnPerSecond);
-
-        WEAPON_DICT = new Dictionary<WeaponType, WeaponDefinition>();
-        foreach (WeaponDefinition weaponDefinition in WeaponDefinitions)
-        {
-            WEAPON_DICT[weaponDefinition.type] = weaponDefinition;
-        }
     }
 
     private void SpawnEnemy()
@@ -51,12 +41,5 @@ public class EnemySpawner : MonoBehaviour
         enemy.transform.position = position;
 
         Invoke(nameof(SpawnEnemy), 1f / _enemySpawnPerSecond);
-    }
-
-    static public WeaponDefinition GetWeaponDefinition(WeaponType type)
-    {
-        if (WEAPON_DICT.ContainsKey(type)) return WEAPON_DICT[type];
-
-        return new WeaponDefinition();
     }
 }
