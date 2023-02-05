@@ -1,15 +1,15 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class GameRestart : MonoBehaviour
 {
-    private static GameRestart s;
+    public static GameRestart S { get; private set; }
 
-    public static GameRestart S => s;
-    
+    private void Awake()
+    {
+        S = this;
+    }
+
     public void DelayedRestart(float delay)
     {
         Invoke(nameof(Restart), delay);
@@ -18,10 +18,5 @@ public class GameRestart : MonoBehaviour
     public void Restart()
     {
         SceneManager.LoadScene("GameScene");
-    }
-
-    private void Awake()
-    {
-        s = this;
     }
 }

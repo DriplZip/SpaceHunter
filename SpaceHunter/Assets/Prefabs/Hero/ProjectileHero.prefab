@@ -126,6 +126,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: caf4ecfcfd11b8747b58f508f7785df5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _weaponType: 0
 --- !u!114 &-9013747565132192773
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -138,5 +139,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6762963cf9d55074cb0195a9a44de09d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  repulsionRadius: -1
-  keepOnScreen: 0
+  _repulsionRadius: -3
+  _keepOnScreen: 0
